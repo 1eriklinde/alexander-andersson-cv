@@ -1,0 +1,21 @@
+{
+  "name": "alexander-cv-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CV site for Alexander Andersson — plain HTML, no build step, deployed to Cloudflare Workers static assets.",
+  "type": "module",
+  "scripts": {
+    "test": "node test/page.test.mjs",
+    "dev": "npx wrangler dev",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler versions upload"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/ibm-plex-serif": "^5.3.0",
+    "jsdom": "^29.1.1",
+    "wrangler": "^4.157.0"
+  }
+}
