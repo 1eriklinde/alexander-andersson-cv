@@ -56,6 +56,16 @@ test("the CV reads without JavaScript: every role and bullet is in the HTML", ()
   assert.equal(doc.querySelector("h1").textContent.replace(/\s+/g, " ").trim(), "Alexander Andersson");
 });
 
+test("the top notice says it is a test build, and links the prompt and the source", () => {
+  const dom = new JSDOM(html);
+  const notice = dom.window.document.querySelector(".notice");
+  assert.ok(notice, "the notice is present");
+  assert.match(notice.textContent, /test build/i);
+  const hrefs = [...notice.querySelectorAll("a")].map((a) => a.getAttribute("href"));
+  assert.ok(hrefs.some((h) => h.endsWith("/guide.md")), "the prompt is linked");
+  assert.ok(hrefs.some((h) => h.includes("github.com/1eriklinde/alexander-andersson-cv")), "the source is linked");
+});
+
 test("no phone number is published anywhere", () => {
   const dom = new JSDOM(html);
   const text = dom.window.document.body.textContent;
